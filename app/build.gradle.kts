@@ -2,14 +2,16 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.google.services)
 }
 
 android {
-    namespace = "com.example.studyai" // Ensure this matches your package name
+    namespace = "com.example.studyai"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.studyai" // Ensure this matches your package name
+        applicationId = "com.example.studyai"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
