@@ -4,6 +4,8 @@ kotlin = "2.1.0"
 ksp = "2.1.0-1.0.29"
 composeBom = "2025.01.00"
 firebaseBom = "33.9.0"
+firebaseAppcheckRecaptcha = "18.0.0"
+firebaseVertexai = "16.0.0"
 activityCompose = "1.10.0"
 lifecycle = "2.8.7"
 room = "2.6.1"
@@ -39,8 +41,8 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
-firebase-vertexai = { group = "com.google.firebase", name = "firebase-vertexai" }
-firebase-appcheck-recaptcha = { group = "com.google.firebase", name = "firebase-appcheck-recaptcha" }
+firebase-vertexai = { module = "com.google.firebase:firebase-vertexai", version.ref = "firebaseVertexai" }
+firebase-appcheck-recaptcha = { module = "com.google.firebase:firebase-appcheck-recaptcha", version.ref = "firebaseAppcheckRecaptcha" }
 
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
