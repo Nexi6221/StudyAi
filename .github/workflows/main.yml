@@ -25,12 +25,29 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Create missing build dependencies
+      - name: Resolve Project Directory & Prepare Files
         run: |
-          # Generate default debug keystore
+          if [ -d "StudyAi-main" ]; then
+            PROJECT_DIR="StudyAi-main"
+          else
+            PROJECT_DIR="."
+          fi
+          echo "PROJECT_DIR=$PROJECT_DIR" >> $GITHUB_ENV
+
+          cd $PROJECT_DIR
+
+          # Generate debug keystore
           keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
-          
-          # Create matching google-services.json
+
+          # Setup local.properties & .env
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          if [ -f ".env.example" ]; then
+            cp .env.example .env
+          else
+            touch .env
+          fi
+
+          # Generate Google Services file
           mkdir -p app
           echo '{
             "project_info": { "project_number": "1234567890", "project_id": "studyai-dummy", "storage_bucket": "studyai-dummy.appspot.com" },
@@ -43,17 +60,19 @@ jobs:
             "configuration_version": "1"
           }' > app/google-services.json
 
-          # Ensure Gradle Wrapper exists
+          # Generate Wrapper if missing
           if [ ! -f "gradlew" ]; then
             gradle wrapper
           fi
           chmod +x gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug --stacktrace
+        run: |
+          cd ${{ env.PROJECT_DIR }}
+          ./gradlew assembleDebug -Pkotlin.version=1.9.20 -Porg.jetbrains.kotlin.android.gradle.plugin.version=1.9.20 --stacktrace
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: StudyAi-Debug-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: ${{ env.PROJECT_DIR }}/app/build/outputs/apk/debug/app-debug.apk
