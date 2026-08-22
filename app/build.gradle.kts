@@ -73,7 +73,7 @@ googleServices { missingGoogleServicesStrategy = MissingGoogleServicesStrategy.W
 
 dependencies {
   implementation(platform(libs.androidx.compose.bom))
-  implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
+  implementation(platform(libs.firebase.bom))
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.compose.material.icons.core)
   implementation(libs.androidx.compose.material.icons.extended)
@@ -88,8 +88,8 @@ dependencies {
   implementation(libs.androidx.room.ktx)
   implementation(libs.androidx.room.runtime)
   implementation(libs.converter.moshi)
-  implementation("com.google.firebase:firebase-vertexai")
-  implementation("com.google.firebase:firebase-appcheck-recaptcha")
+  implementation(libs.firebase.vertexai)
+  implementation(libs.firebase.appcheck.recaptcha)
   implementation(libs.kotlinx.coroutines.android)
   implementation(libs.kotlinx.coroutines.core)
   implementation(libs.logging.interceptor)
