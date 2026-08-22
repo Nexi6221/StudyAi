@@ -39,8 +39,8 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
-firebase-vertexai = { module = "com.google.firebase:firebase-vertexai" }
-firebase-appcheck-recaptcha = { module = "com.google.firebase:firebase-appcheck-recaptcha" }
+firebase-vertexai = { group = "com.google.firebase", name = "firebase-vertexai" }
+firebase-appcheck-recaptcha = { group = "com.google.firebase", name = "firebase-appcheck-recaptcha" }
 
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
@@ -59,7 +59,7 @@ androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", vers
 androidx-core = { module = "androidx.test:core", version = "1.6.1" }
 androidx-runner = { module = "androidx.test:runner", version = "1.6.2" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
-roborazzi = { module = "io.github.takahirom.roborazzi:roborazzi", version.ref = "roborazzi" }
+roborazzi = { module = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 roborazzi-compose = { module = "io.github.takahirom.roborazzi:roborazzi-compose", version.ref = "roborazzi" }
 roborazzi-junit-rule = { module = "io.github.takahirom.roborazzi:roborazzi-junit-rule", version.ref = "roborazzi" }
 
